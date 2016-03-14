@@ -5,6 +5,7 @@
 #include "methods.h"
 
 using namespace std;
+using namespace chrono;
 
 template <typename Obj>
 int sSearchRec(vector<Obj> v, Obj n, int l, int r){
@@ -69,36 +70,53 @@ void randomFill(std::vector<Obj> &v, const Obj l, const Obj u, const unsigned in
 }
 
 template <typename Obj>
-void calculateTime(Obj fileName, int _argc, Obj argv, Obj function){
-    ofstream myfile;
-    myfile.open("exemple.txt");
-    auto maxN(0ul);
-    if(_argc > 1)
-        stringstream(argv[1])>> maxN;
+void calculateTime(int x int *function, int n, int l, int r){
+    long double duration = 0;
+    std::vector<long int> v;
+    for (int i = 0; i < n; ++i)
+    {
+        auto start = steady_clock::now();
+        function(v, x, l, r);
+        auto end = steady_clock::now();
+        auto diff = std::chrono::duration <double, std::milli> (end-start).count();
 
-    std::cout << ">>> STARTING computation that needs timing <<<\n";
-    for(auto x(0ul);x<=maxN;x++){
-    auto start = std::chrono::steady_clock::now();
-
-    generateArray(x);
-    // cout << "Factorial of " << x << " is " << "( " << fat(x) << " )" << endl;
-
-    auto end = std::chrono::steady_clock::now();
-    std::cout << ">>> ENDING computation that needs timing <<<"<<x<<endl;
-    //Store the time difference between start and end
-    auto diff = end - start;
-
-    // Milliseconds (10^-3)
-    std::cout << "\t\t>>> " << std::chrono::duration <double, std::milli> (diff).count() << " ms" << std::endl;
-    auto aux =  std::chrono::duration <double, std::milli> (diff).count();
-    // Nanoseconds (10^-9)
-    //std::cout << "\t\t>>> " << std::chrono::duration <double, std::nano> (diff).count() << " ns" << std::endl;
-    // Seconds
-    auto diff_sec = std::chrono::duration_cast<std::chrono::seconds>(diff);
-    std::cout << "\t\t>>> " << diff_sec.count() << " s" << std::endl;
-    myfile<<x<<" "<<aux<<"\n";
+        duration += (diff-duration)/(i+1);
     }
-    myfile.close();
-
-
+    return duration;
 }
+
+
+// template <typename Obj>
+// void calculateTime(Obj fileName, int _argc, Obj argv, Obj function){
+//     ofstream myfile;
+//     myfile.open("exemple.txt");
+//     auto maxN(0ul);
+//     if(_argc > 1)
+//         stringstream(argv[1])>> maxN;
+
+//     std::cout << ">>> STARTING computation that needs timing <<<\n";
+//     for(auto x(0ul);x<=maxN;x++){
+//     auto start = std::chrono::steady_clock::now();
+
+//     generateArray(x);
+//     // cout << "Factorial of " << x << " is " << "( " << fat(x) << " )" << endl;
+
+//     auto end = std::chrono::steady_clock::now();
+//     std::cout << ">>> ENDING computation that needs timing <<<"<<x<<endl;
+//     //Store the time difference between start and end
+//     auto diff = end - start;
+
+//     // Milliseconds (10^-3)
+//     std::cout << "\t\t>>> " << std::chrono::duration <double, std::milli> (diff).count() << " ms" << std::endl;
+//     auto aux =  std::chrono::duration <double, std::milli> (diff).count();
+//     // Nanoseconds (10^-9)
+//     //std::cout << "\t\t>>> " << std::chrono::duration <double, std::nano> (diff).count() << " ns" << std::endl;
+//     // Seconds
+//     auto diff_sec = std::chrono::duration_cast<std::chrono::seconds>(diff);
+//     std::cout << "\t\t>>> " << diff_sec.count() << " s" << std::endl;
+//     myfile<<x<<" "<<aux<<"\n";
+//     }
+//     myfile.close();
+
+
+// }
