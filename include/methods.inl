@@ -69,8 +69,7 @@ void randomFill(std::vector<Obj> &v, const Obj l, const Obj u, const unsigned in
         v[i] = distr(eng);
 }
 
-template <typename Obj>
-void calculateTime(int x int *function, int n, int l, int r){
+long double calculateTime(int x int *function, int n, int l, int r){
     long double duration = 0;
     std::vector<long int> v;
     for (int i = 0; i < n; ++i)
