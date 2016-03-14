@@ -79,7 +79,7 @@ long double calculateTime(int x int *function, int n, int l, int r){
         auto end = steady_clock::now();
         auto diff = std::chrono::duration <double, std::milli> (end-start).count();
 
-        duration += (diff-duration)/(i+1);
+        duration += (diff-duration);
     }
     return duration;
 }
