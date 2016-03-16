@@ -38,16 +38,16 @@ int main(int argc, char const *argv[])
         bTernRec,
     };
 
-    long int *V;
-    V = new long int[arraySize];
-
-    int l = -123123, r = 123123;
+    // long int *V;
+    // V = new long int[arraySize];
+    vector<long int> V(arraySize);
+    long int l = -123123, r = 123123;
 
     randomFill(V, l, r, seed, arraySize);
 
     for(int n = 16; n < arraySize; n *= 2){
         for(int i=0; i < 3; ++i){
-            calculateTime(100, funcArray[i], 3, l, r);
+            calculateTime(100, funcArray[i], 3, l, r, V.begin());
         }
     }
 

@@ -9,7 +9,7 @@ using namespace std;
 using namespace chrono;
 
 template <typename Obj>
-int sSearchRec(Obj v, Obj n, int l, int r){
+int sSearchRec(std::vector<Obj> v , Obj n, int l, int r){
     if(l>r)
         return -1;
     else if (v[l] == n)
@@ -19,7 +19,7 @@ int sSearchRec(Obj v, Obj n, int l, int r){
 }
 
 template <typename Obj>
-int bSearchIte(Obj v, Obj n, int l, int r){
+int bSearchIte(std::vector<Obj> v, Obj n, int l, int r){
     while (l <= r){
         int media = (l+r)/2;
         if(v[media] == n){
@@ -35,7 +35,7 @@ int bSearchIte(Obj v, Obj n, int l, int r){
 }
 
 template <typename Obj>
-int bTernRec (Obj v, Obj n, int l, int r){
+int bTernRec (std::vector<Obj> v, Obj n, int l, int r){
     int media0 = (r+(2*l))/3;
     int media1 = (l+(2*r))/3;
 
@@ -60,7 +60,7 @@ int bTernRec (Obj v, Obj n, int l, int r){
 // }
 
 template <typename Obj>
-void randomFill(vector<Obj> *&v, const Obj l, const Obj u, const unsigned int seed, const int size) {
+void randomFill(std::vector<Obj> &v, const Obj l, const Obj u, const unsigned int seed, const int size) {
     // use the default random engine and an uniform distribution
     default_random_engine eng(seed);
     uniform_real_distribution<double> distr(l, u);
@@ -70,8 +70,11 @@ void randomFill(vector<Obj> *&v, const Obj l, const Obj u, const unsigned int se
         v[i] = distr(eng);
 }
 
+ // ‘calculateTime(int, int (*&)(std::vector<long int>, long int, int, int), int, long int&, long int&, std::vector<long int>::iterator)’
+ //             calculateTime(100, funcArray[i], 3, l, r, V.begin());
+
 template <typename Obj>
-long double calculateTime(const Obj x , int (*function)(Obj, Obj ,int , int ), const Obj n, const Obj l, const Obj r, const Obj s){
+long double calculateTime(int x , int (*function)(Obj *, Obj , int , int ), Obj n, int l, int r, const Obj s){
     long double duration = 0;
     vector<long int> v(s+l, s+r) ;
     for (int i = 0; i < x; ++i)
@@ -88,7 +91,7 @@ long double calculateTime(const Obj x , int (*function)(Obj, Obj ,int , int ), c
 
 //PARTE DE BRENO
 template <typename Obj>
-int searchIte( Obj _V, Obj &x, int high )
+int searchIte( std::vector<Obj> _V, Obj &x, int high )
 {
     for (int z =0; z <= high; z++)
     {
@@ -99,7 +102,7 @@ int searchIte( Obj _V, Obj &x, int high )
 }
 
 template <typename Obj>
-int bSearchRec(Obj _V, Obj &x, int low, int high)
+int bSearchRec(std::vector<Obj> _V, Obj &x, int low, int high)
 {
     int mid = ( low+ high )/2;
     if ( low > high)
@@ -113,7 +116,7 @@ int bSearchRec(Obj _V, Obj &x, int low, int high)
 }
 
 template <typename Obj>
-int tSearchIte(Obj _V, Obj &x, int low, int high)
+int tSearchIte(std::vector<Obj> _V, Obj &x, int low, int high)
 {
     while (low <= high)
     {
