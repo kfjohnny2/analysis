@@ -40,14 +40,20 @@ int main(int argc, char const *argv[])
 
     // long int *V;
     // V = new long int[arraySize];
+    cout << "ALOCATING VECTOR" << endl;
+
     vector<long int> V(arraySize);
-    long int l = -123123, r = 123123;
+    long int l = -9876543210, r = 987654321;
+
+    cout << "RANDOMIZING VECTOR" << endl;
 
     randomFill(V, l, r, seed, arraySize);
 
+    cout << "FINISHED" << endl;
+
     for(int n = 16; n < arraySize; n *= 2){
         for(int i=0; i < 3; ++i){
-            calculateTime(V, 100, funcArray[i], 3, l, r);
+            calculateTime(V, funcArray[i], 3, l, r);
         }
     }
 

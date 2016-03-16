@@ -70,16 +70,15 @@ void randomFill(std::vector<Obj> &v, const Obj l, const Obj u, const unsigned in
         v[i] = distr(eng);
 }
 
- // ‘calculateTime(int, int (*&)(std::vector<long int>, long int, int, int), int, long int&, long int&, std::vector<long int>::iterator)’
- //             calculateTime(100, funcArray[i], 3, l, r, V.begin());
+long double calculateTime(const std::vector<long int> v, int (*function)(std::vector<long int>, long int, int, int ), long int x, int l, int r ){
 
-template <typename Obj>
-long double calculateTime(const std::vector<Obj> *v, int n, int (*function)(std::vector<Obj>, Obj, int, int ), Obj x, int l, int r ){
     long double duration = 0;
-    for (int i = 0; i < n; ++i)
+    for (int i = 0; i < 99; ++i)
     {
         auto start = steady_clock::now();
-        function(v, x, l, r);
+
+            function(v, x, l, r);
+
         auto end = steady_clock::now();
         auto diff = chrono::duration <double, std::milli> (end-start).count();
         duration += (diff-duration)/(i+1);
