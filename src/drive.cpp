@@ -36,6 +36,9 @@ int main(int argc, char const *argv[])
         sSearchRec,
         bSearchIte,
         bTernRec,
+        // sSearchIte,
+        // bSearchRec,
+        // tSearchIte,
     };
 
     // long int *V;
@@ -43,17 +46,18 @@ int main(int argc, char const *argv[])
     cout << "ALOCATING VECTOR" << endl;
 
     vector<long int> V(arraySize);
-    long int l = -98, r = 98;
+    // long int l = -98, r = 98;
 
     cout << arraySize << endl;
 
-    randomFill(V, l, r, seed, arraySize);
+    // randomFill(V, l, r, seed, arraySize);
+    randomFill( V, arraySize, seed);
 
     cout << "FINISHED" << endl;
 
     for(int n = 16; n < arraySize; n *= 2){
-        for(int i=0; i < 3; ++i){
-           cout <<  calculateTime(V, funcArray[i], 3, l, r) << endl;
+        for(int i=0; i < 6; ++i){
+           cout <<  calculateTime(V, funcArray[i], 3, 0, n-1) << endl;
         }
     }
 

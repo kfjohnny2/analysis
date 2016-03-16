@@ -17,11 +17,11 @@ int bTernRec(std::vector<Obj> * , Obj , int , int ); // busca ternária recursiv
 template <typename Obj>
 int wStdSearch(std::vector<Obj> * , Obj , int , int ); // wrapper para busca sequencial
 
-template <typename Obj>
-void randomFill(std::vector<Obj> &, const Obj , const Obj , const unsigned int , const int );
+// template <typename Obj>
+// void randomFill(std::vector<Obj> &, const Obj , const Obj , const unsigned int , const int );
 
-// template<typename Obj>
-// void randomFill( vector<Obj> &, Obj, const unsigned int );
+template<typename Obj>
+void randomFill( vector<Obj> &, Obj, const unsigned int );
 
 long double calculateTime(const std::vector<long int> , int (*)(std::vector<long int>, long int, int, int ), long int , int , int  );
 
