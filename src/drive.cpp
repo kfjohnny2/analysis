@@ -47,6 +47,7 @@ int main(int argc, char const *argv[])
 
     vector<long int> V(arraySize);
     long int l = 0, r = 1000;
+    long int elemento = 47;
 
     cout << arraySize << endl;
 
@@ -56,8 +57,8 @@ int main(int argc, char const *argv[])
     cout << "FINISHED" << endl;
 
     for(long int n = 16; n < arraySize; n *= 2){
-        for(int i=0; i < 3; ++i){
-           long double duration = calculateTime(V, funcArray[i], 3, 0, n-1) ;
+        for(int i=0; i < 6; ++i){
+           long double duration = calculateTime(V, funcArray[i], elemento, l, n-1) ;
            cout << i << ", " << n << ", " << duration << endl;
            printFile(i, duration, n);
         }
