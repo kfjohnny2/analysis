@@ -56,7 +56,7 @@ int main(int argc, char const *argv[])
     cout << "FINISHED" << endl;
 
     for(long int n = 16; n < arraySize; n *= 2){
-        for(int i=0; i < 6; ++i){
+        for(int i=0; i < 3; ++i){
            cout <<  calculateTime(V, funcArray[i], 3, 0, n-1) << endl;
         }
     }
