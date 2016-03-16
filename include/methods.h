@@ -18,10 +18,7 @@ template <typename Obj>
 int wStdSearch(std::vector<Obj> * , Obj , long int, long int ); // wrapper para busca sequencial
 
 template <typename Obj>
-void randomFill(std::vector<Obj> &, const Obj , const Obj , const unsigned int , const int );
-
-// template<typename Obj>
-// void randomFill( vector<Obj> &, Obj, const unsigned int );
+void randomFill(vector<Obj> &, const int, const int );
 
 long double calculateTime(const std::vector<long int> , int (*)(std::vector<long int>, long int, int, int ), long int , long int , long int  );
 

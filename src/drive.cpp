@@ -27,8 +27,26 @@ int main(int argc, char const *argv[])
         arraySize = PATTERN_VECTOR;
     }
 
-    arraySize = pow(2, arraySize);
+    //------------------------------------------//
+    cout << ">>> Alocando Vetor..." << endl;
 
+    arraySize = pow(2, arraySize);
+    vector<long int> V(arraySize);
+    cout << arraySize << endl;
+
+    cout << "\n>>> Alocação Concluida..." << endl;
+    //------------------------------------------//
+    cout << "\n>>> Preenchendo Vetor" << endl;
+
+    //randomFill(V, l, r, seed, arraySize);
+    randomFill( V, arraySize, seed);
+
+    cout << "\n>>> Preenchimento Concluido" << endl;
+
+    cout<< "\n>>> Ordenando o Vetor"<<endl;
+    sort(V.begin(), V.end() );
+    cout<< "\n>>> Ordenação Concluida"<<endl;
+    //------------------------------------------//
 
     //3 - CONSTRUIR ARRAY DE FUNÇÕES
 
@@ -43,23 +61,29 @@ int main(int argc, char const *argv[])
 
     // long int *V;
     // V = new long int[arraySize];
-    cout << "ALOCATING VECTOR" << endl;
+    // cout << "ALOCATING VECTOR" << endl;
 
-    vector<long int> V(arraySize);
-    long int l = 0, r = 1000;
-    long int elemento = 47;
+    // vector<long int> V(arraySize);
+    // long int l = 0, r = 1000;
+    // // long int elemento = 47;
 
-    cout << arraySize << endl;
+    // cout << arraySize << endl;
 
-    randomFill(V, l, r, seed, arraySize);
-    // randomFill( V, arraySize, seed);
+    // randomFill(V, l, r, seed, arraySize);
+    // // randomFill( V, arraySize, seed);
 
-    cout << "FINISHED" << endl;
+    // cout << "FINISHED" << endl;
 
-    for(long int n = 16; n < arraySize; n *= 2){
+    // for(long int n = 16; n < arraySize; n *= 2){
+    //     for(int i=0; i < 6; ++i){
+    //        long double duration = calculateTime(V, funcArray[i], elemento, l, n-1) ;
+    //        cout << i << ", " << n << ", " << duration << endl;
+    //        printFile(i, duration, n);
+    for(long int n = 32; n <= arraySize; n *= 2){
+        // cout <<  "\n>>> Entrada: 2^"<< z << " " << n << endl;
         for(int i=0; i < 6; ++i){
-           long double duration = calculateTime(V, funcArray[i], elemento, l, n-1) ;
-           cout << i << ", " << n << ", " << duration << endl;
+           // cout <<  "\n>>> Função "<< i << " : ";
+           long double duration = calculateTime(V, funcArray[i], 3, 0, n-1) ;
            printFile(i, duration, n);
         }
     }
