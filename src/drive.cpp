@@ -62,9 +62,9 @@ int main(int argc, char const *argv[])
     // long int *V;
     // V = new long int[arraySize];
 
-    int z=4;
-    for(long int n = 16; n <= arraySize; n *= 2){
-        cout <<  "\n>>> Entrada: 2^"<< z << endl;
+    int z=5;
+    for(long int n = 32; n <= arraySize; n *= 2){
+        cout <<  "\n>>> Entrada: 2^"<< z << " " << n << endl;
         for(int i=0; i < 6; ++i){
            cout <<  "\n>>> Função "<< i << " : ";
            cout <<  calculateTime(V, funcArray[i], 3, 0, n-1) << "";
