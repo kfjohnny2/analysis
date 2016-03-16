@@ -43,9 +43,9 @@ int main(int argc, char const *argv[])
     cout << "ALOCATING VECTOR" << endl;
 
     vector<long int> V(arraySize);
-    long int l = -9876543210, r = 987654321;
+    long int l = -98765, r = 98765;
 
-    cout << "RANDOMIZING VECTOR" << endl;
+    cout << arraySize << endl;
 
     randomFill(V, l, r, seed, arraySize);
 
@@ -53,7 +53,7 @@ int main(int argc, char const *argv[])
 
     for(int n = 16; n < arraySize; n *= 2){
         for(int i=0; i < 3; ++i){
-            calculateTime(V, funcArray[i], 3, l, r);
+           cout <<  calculateTime(V, funcArray[i], 3, l, r) << endl;
         }
     }
 
