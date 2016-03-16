@@ -21,7 +21,10 @@ template <typename Obj>
 void randomFill(std::vector<Obj> &, const Obj , const Obj , const unsigned int , const int );
 
 template <typename Obj>
-long double calculateTime(int, int (*)(Obj *, Obj, int, int), Obj , int , int, const Obj *);
+long double calculateTime(const std::vector<Obj> *, int , int (*)(std::vector<Obj>, Obj, int, int ), Obj , int , int  );
+
+/*template <typename Obj>
+long double calculateTime(int, int (*)(Obj *, Obj, int, int), Obj , int , int, const std::vector<Obj> v);*/
 
 template <typename Obj>
 int searchIte( std::vector<Obj> *, const Obj &x, int high );

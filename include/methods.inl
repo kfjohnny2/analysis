@@ -74,20 +74,33 @@ void randomFill(std::vector<Obj> &v, const Obj l, const Obj u, const unsigned in
  //             calculateTime(100, funcArray[i], 3, l, r, V.begin());
 
 template <typename Obj>
-long double calculateTime(int x , int (*function)(Obj *, Obj , int , int ), Obj n, int l, int r, const Obj s){
+long double calculateTime(const std::vector<Obj> *v, int n, int (*function)(std::vector<Obj>, Obj, int, int ), Obj x, int l, int r ){
     long double duration = 0;
-    vector<long int> v(s+l, s+r) ;
-    for (int i = 0; i < x; ++i)
+    for (int i = 0; i < n; ++i)
     {
         auto start = steady_clock::now();
-        function(v, n, l, r);
+        function(v, x, l, r);
         auto end = steady_clock::now();
         auto diff = chrono::duration <double, std::milli> (end-start).count();
-
         duration += (diff-duration)/(i+1);
     }
     return duration;
 }
+
+// template <typename Obj>
+// long double calculateTime(int x , int (*function)(Obj , Obj , int , int ), Obj n, int l, int r, const std::vector<Obj> v){
+//     long double duration = 0;
+//     for (int i = 0; i < x; ++i)
+//     {
+//         auto start = steady_clock::now();
+//         function(v, n, l, r);
+//         auto end = steady_clock::now();
+//         auto diff = chrono::duration <double, std::milli> (end-start).count();
+
+//         duration += (diff-duration)/(i+1);
+//     }
+//     return duration;
+// }
 
 //PARTE DE BRENO
 template <typename Obj>

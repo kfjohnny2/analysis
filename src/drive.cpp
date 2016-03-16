@@ -47,7 +47,7 @@ int main(int argc, char const *argv[])
 
     for(int n = 16; n < arraySize; n *= 2){
         for(int i=0; i < 3; ++i){
-            calculateTime(100, funcArray[i], 3, l, r, V.begin());
+            calculateTime(V, 100, funcArray[i], 3, l, r);
         }
     }
 
