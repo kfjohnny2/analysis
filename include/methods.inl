@@ -62,27 +62,27 @@ int bTernRec (std::vector<Obj> v, Obj n, int l, int r){
 
 // }
 
-// template <typename Obj>
-// void randomFill(std::vector<Obj> &v, const Obj l, const Obj u, const unsigned int seed, const int size) {
-//     // use the default random engine and an uniform distribution
-//     default_random_engine eng(seed);
-//     uniform_real_distribution<double> distr(l, u);
-
-//     // Fill up vector
-//     for (int i = 0; i < size; i++)
-//         v[i] = distr(eng);
-// }
-
-template <typename  Obj>
-void randomFill(vector<Obj> &a, const int size, const int seed )
-{
-    //unsigned int small = 0, bigger = 1000;
+template <typename Obj>
+void randomFill(std::vector<Obj> &v, const Obj l, const Obj u, const unsigned int seed, const int size) {
+    // use the default random engine and an uniform distribution
     default_random_engine eng(seed);
-    uniform_real_distribution <double> distr(0, 1000);
-    for(int x=0;x<size;x++)
-        a[x] = distr(eng);
+    uniform_real_distribution<double> distr(l, u);
 
+    // Fill up vector
+    for (int i = 0; i < size; i++)
+        v[i] = distr(eng);
 }
+
+// template <typename  Obj>
+// void randomFill(vector<Obj> &a, const int size, const int seed )
+// {
+//     //unsigned int small = 0, bigger = 1000;
+//     default_random_engine eng(seed);
+//     uniform_real_distribution <double> distr(0, 1000);
+//     for(int x=0;x<size;x++)
+//         a[x] = distr(eng);
+
+// }
 
 long double calculateTime(const std::vector<long int> v, int (*function)(std::vector<long int>, long int, int, int ), long int x, long int l, long int r ){
 
