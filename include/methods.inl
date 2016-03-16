@@ -9,7 +9,7 @@ using namespace std;
 using namespace chrono;
 
 template <typename Obj>
-int sSearchRec(std::vector<Obj> v , Obj n, int l, int r){
+long int sSearchRec(std::vector<Obj> v , Obj n, long int l, long int r){
     if(l>r){
         return -1;
     }
@@ -22,7 +22,7 @@ int sSearchRec(std::vector<Obj> v , Obj n, int l, int r){
 }
 
 template <typename Obj>
-int bSearchIte(std::vector<Obj> v, Obj n, int l, int r){
+long int bSearchIte(std::vector<Obj> v, Obj n, long int l, long int r){
     while (l <= r){
         int media = (l+r)/2;
         if(v[media] == n){
@@ -38,7 +38,7 @@ int bSearchIte(std::vector<Obj> v, Obj n, int l, int r){
 }
 
 template <typename Obj>
-int bTernRec (std::vector<Obj> v, Obj n, int l, int r){
+long int bTernRec (std::vector<Obj> v, Obj n, long int l, long int r){
     int media0 = (r+(2*l))/3;
     int media1 = (l+(2*r))/3;
 
@@ -84,7 +84,7 @@ void randomFill(std::vector<Obj> &v, const Obj l, const Obj u, const unsigned in
 
 // }
 
-long double calculateTime(const std::vector<long int> v, int (*function)(std::vector<long int>, long int, int, int ), long int x, long int l, long int r ){
+long double calculateTime(const std::vector<long int> v, int (*function)(std::vector<long int>, long int, long int, long int ), long int x, long int l, long int r ){
 
     long double duration = 0;
     for (int i = 0; i < 100; ++i)
