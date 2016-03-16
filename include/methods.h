@@ -28,14 +28,20 @@ long double calculateTime(const std::vector<long int> , int (*)(std::vector<long
 /*template <typename Obj>
 long double calculateTime(int, int (*)(Obj *, Obj, int, int), Obj , int , int, const std::vector<Obj> v);*/
 
-template <typename Obj>
-int searchIte( std::vector<Obj> *, const Obj &x, int high );
+template<typename Obj>
+long int sSearchIte( vector<Obj>, const Obj, long int, long int  );
 
-template <typename Obj>
-int bSearchRec(std::vector<Obj> *, Obj &x, int low, int high);
+template<typename Obj>
+long int bSearchRec( vector<Obj>, const Obj, long int, long int );
 
-template <typename Obj>
-int tSearchIte(std::vector<Obj> *, Obj &x, int low, int high);
+template<typename Obj>
+long int tSearchIte( vector<Obj>, const Obj , long int, long int );
+
+template<typename Obj>
+long int bWrapperSearch( vector<Obj>, const Obj, long int, long int );
+
+template<typename Obj>
+int comparar ( const Obj, const Obj );
 
 #include "methods.inl"
 

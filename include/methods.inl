@@ -116,21 +116,21 @@ long double calculateTime(const std::vector<long int> v, int (*function)(std::ve
 // }
 
 //PARTE DE BRENO
-template <typename Obj>
-int searchIte( std::vector<Obj> _V, Obj &x, int high )
+template<typename Obj>
+long int sSearchIte(vector<Obj> _V, const Obj x, long int low, long int high )
 {
-    for (int z =0; z <= high; z++)
+    for (; low <= high; low++)
     {
-        if(_V[z] == x)
-            return z;
+        if(_V[low] == x)
+            return low;
     }
     return -1;
 }
 
-template <typename Obj>
-int bSearchRec(std::vector<Obj> _V, Obj &x, int low, int high)
+template<typename Obj>
+long int bSearchRec(vector<Obj> _V, const Obj x, long int low, long int high)
 {
-    int mid = ( low+ high )/2;
+    long int mid = ( low+ high )/2;
     if ( low > high)
         return -1;
     if ( _V[mid] == x )
@@ -142,12 +142,12 @@ int bSearchRec(std::vector<Obj> _V, Obj &x, int low, int high)
 }
 
 template <typename Obj>
-int tSearchIte(std::vector<Obj> _V, Obj &x, int low, int high)
+long int tSearchIte(vector<Obj> _V, const Obj x, long int low, long int high)
 {
     while (low <= high)
     {
-        int T1 = low + ( high - low )*1/3;
-        int T2 = low + ( high - low )*2/3;
+        long int T1 = low + ( high - low )*1/3;
+        long int T2 = low + ( high - low )*2/3;
         if( _V[T1] == x )
             return T1;
         else if ( _V[T2] == x )
@@ -162,6 +162,26 @@ int tSearchIte(std::vector<Obj> _V, Obj &x, int low, int high)
         }
     }
     return -1;
+}
+
+template <typename Obj>
+int comparar (const Obj x, const Obj y)
+{
+    Obj *b = (Obj *) y;
+    Obj *a = (Obj *) x;
+    if ( *a < *b ) return -1;
+    else if ( *a > *b ) return 1;
+    else return 0;
+
+}
+//void* bsearch( const void* key, const void* ptr, std::size_t count,
+//std::size_t size, int (*comp)(const void*, const void*) );
+template<typename Obj>
+long int bWrapperSearch( vector<Obj> _V, const Obj x, long int low, long int high)
+{
+    Obj *a = (Obj *)bsearch( &x, _V.data(), high - low + 1, sizeof(Obj), comparar);
+    if( a != NULL ) return (a - _V.data() );
+    else return -1;
 }
 
 
