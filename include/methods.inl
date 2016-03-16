@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <chrono>
 #include <random>
+#include <fstream>
 
 #include "methods.h"
 
@@ -97,7 +98,29 @@ long double calculateTime(const std::vector<long int> v, int (*function)(std::ve
         auto diff = chrono::duration <double, std::milli> (end-start).count();
         duration += (diff-duration)/(i+1);
     }
+
     return duration;
+}
+
+void printFile(int f, long double duration, long int n){
+    ofstream myfile;
+
+    switch(f){
+        case 0:
+            myfile.open("standard_search_recursive.txt", ios::out | ios::app );
+            myfile << n << "\t "<< duration << endl;
+            myfile.close(); //imprime o valor da variavel cont no txt
+        case 1:
+            myfile.open("bSearchIte.txt", ios::out | ios::app ); // nome do arquivo txt
+            myfile << n << "\t "<< duration << endl; //imprime o valor da variavel cont no txt
+            myfile.close();
+        case 2:
+            myfile.open("bTernRec.txt", ios::out | ios::app ); // nome do arquivo txt
+            myfile << n << "\t "<< duration << endl; //imprime o valor da variavel cont no txt
+            myfile.close();
+
+    }
+
 }
 
 // template <typename Obj>

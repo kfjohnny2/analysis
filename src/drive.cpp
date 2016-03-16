@@ -57,7 +57,9 @@ int main(int argc, char const *argv[])
 
     for(long int n = 16; n < arraySize; n *= 2){
         for(int i=0; i < 3; ++i){
-           cout <<  calculateTime(V, funcArray[i], 3, 0, n-1) << endl;
+           long double duration = calculateTime(V, funcArray[i], 3, 0, n-1) ;
+           cout << i << ", " << n << ", " << duration << endl;
+           printFile(i, duration, n);
         }
     }
 
