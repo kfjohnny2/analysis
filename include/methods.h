@@ -23,6 +23,14 @@ void randomFill(Obj *, const Obj , const Obj , const unsigned int , const int );
 template <typename Obj>
 long double calculateTime(const Obj, int * ( Obj *, const Obj, int, int), const Obj);
 
+template <typename Obj>
+int searchIte( Obj *, const Obj &x, int high );
+
+template <typename Obj>
+int bSearchRec(Obj *, Obj &x, int low, int high);
+
+template <typename Obj>
+int tSearchIte(Obj *, Obj &x, int low, int high);
 
 #include "methods.inl"
 
