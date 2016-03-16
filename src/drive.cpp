@@ -27,8 +27,26 @@ int main(int argc, char const *argv[])
         arraySize = PATTERN_VECTOR;
     }
 
-    arraySize = pow(2, arraySize);
+    //------------------------------------------//
+    cout << ">>> Alocando Vetor..." << endl;
 
+    arraySize = pow(2, arraySize);
+    vector<long int> V(arraySize);
+    cout << arraySize << endl;
+    
+    cout << "\n>>> Alocação Concluida..." << endl;
+    //------------------------------------------//
+    cout << "\n>>> Preenchendo Vetor" << endl;
+
+    //randomFill(V, l, r, seed, arraySize);
+    randomFill( V, arraySize, seed);
+    
+    cout << "\n>>> Preenchimento Concluido" << endl;
+
+    cout<< "\n>>> Ordenando o Vetor"<<endl;
+    sort(V.begin(), V.end() );
+    cout<< "\n>>> Ordenação Concluida"<<endl;
+    //------------------------------------------//
 
     //3 - CONSTRUIR ARRAY DE FUNÇÕES
 
@@ -43,23 +61,18 @@ int main(int argc, char const *argv[])
 
     // long int *V;
     // V = new long int[arraySize];
-    cout << "ALOCATING VECTOR" << endl;
 
-    vector<long int> V(arraySize);
-    long int l = 0, r = 1000;
-
-    cout << arraySize << endl;
-
-    randomFill(V, l, r, seed, arraySize);
-    // randomFill( V, arraySize, seed);
-
-    cout << "FINISHED" << endl;
-
-    for(long int n = 16; n < arraySize; n *= 2){
-        for(int i=0; i < 3; ++i){
-           cout <<  calculateTime(V, funcArray[i], 3, 0, n-1) << endl;
+    int z=4;
+    for(long int n = 16; n <= arraySize; n *= 2){
+        cout <<  "\n>>> Entrada: 2^"<< z << endl;
+        for(int i=0; i < 6; ++i){
+           cout <<  "\n>>> Função "<< i << " : ";
+           cout <<  calculateTime(V, funcArray[i], 3, 0, n-1) << "";
         }
+        cout<<"\n";
+        z++;
     }
+    cout<<"\n";
 
     //4 - ATRIBUIR VALOR TOTAL A SER UTILIZADO NO ARRAY, EM UMA VARIAVEL
     //5 - CRIAR VARIÁVEIS E ATRIBUIR VALOR DE MAIOR E MENOR A CADA

@@ -62,7 +62,18 @@ long int bTernRec (std::vector<Obj> v, Obj n, long int l, long int r){
 
 // }
 
-template <typename Obj>
+template <typename  Obj>
+void randomFill(vector<Obj> &a, const int size, const int seed )
+{
+    //unsigned int small = 0, bigger = 1000;
+    default_random_engine eng(seed);
+    uniform_real_distribution <double> distr(0, 1000);
+    for(int x=0;x<size;x++)
+        a[x] = distr(eng);
+
+}
+
+/*template <typename Obj>
 void randomFill(std::vector<Obj> &v, const Obj l, const Obj u, const unsigned int seed, const int size) {
     // use the default random engine and an uniform distribution
     default_random_engine eng(seed);
@@ -71,7 +82,7 @@ void randomFill(std::vector<Obj> &v, const Obj l, const Obj u, const unsigned in
     // Fill up vector
     for (int i = 0; i < size; i++)
         v[i] = distr(eng);
-}
+}*/
 
 // template <typename  Obj>
 // void randomFill(vector<Obj> &a, const int size, const int seed )
@@ -84,7 +95,7 @@ void randomFill(std::vector<Obj> &v, const Obj l, const Obj u, const unsigned in
 
 // }
 
-long double calculateTime(const std::vector<long int> v, int (*function)(std::vector<long int>, long int, long int, long int ), long int x, long int l, long int r ){
+long double calculateTime(const std::vector<long int> v, long int (*function)(std::vector<long int>, long int, long int, long int ), long int x, long int l, long int r ){
 
     long double duration = 0;
     for (int i = 0; i < 100; ++i)
