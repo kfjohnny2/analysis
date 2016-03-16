@@ -32,13 +32,13 @@ int main(int argc, char const *argv[])
 
     //3 - CONSTRUIR ARRAY DE FUNÇÕES
 
-    int (*funcArray[])(vector<long int> , long int , int , int) = {
+    long int (*funcArray[])(vector<long int> , long int , long int , long int) = {
         sSearchRec,
         bSearchIte,
         bTernRec,
-        // sSearchIte,
-        // bSearchRec,
-        // tSearchIte,
+        sSearchIte,
+        bSearchRec,
+        tSearchIte,
     };
 
     // long int *V;
