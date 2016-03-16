@@ -8,7 +8,7 @@
 
 #include "methods.h"
 
-#define PATTERN_VECTOR 20 // tamanho padrão atribuído no vetor
+#define PATTERN_VECTOR 5 // tamanho padrão atribuído no vetor
 #define MAX_VECTOR  30     // maior tamanho a ser alocado no vetor
 
 using namespace std;
@@ -23,7 +23,7 @@ int main(int argc, char const *argv[])
     }
     //2 - VERIFICAR SE A QUANTIDADE DE TERMOS NO VETOR É VÁLIDA (size >= 5)
     if(arraySize < 5 || arraySize > MAX_VECTOR){
-        cout << "TAMANHO DO VETOR DEVE SER MAIOR QUE 5 E MENOR QUE 31! O VALOR PADRAO SERÁ ATRIBUIDO" << endl;
+        cout << "TAMANHO DO VETOR DEVE SER MAIOR QUE 5 E MENOR QUE 31! O MENOR VALOR SERÁ ATRIBUÍDO" << endl;
         arraySize = PATTERN_VECTOR;
     }
 
@@ -38,16 +38,22 @@ int main(int argc, char const *argv[])
         bTernRec,
     };
 
-    long int *V;
-    V = new long int[arraySize];
+    // long int *V;
+    // V = new long int[arraySize];
+    cout << "ALOCATING VECTOR" << endl;
 
-    int l = -123123, r = 123123;
+    vector<long int> V(arraySize);
+    long int l = -98, r = 98;
+
+    cout << arraySize << endl;
 
     randomFill(V, l, r, seed, arraySize);
 
+    cout << "FINISHED" << endl;
+
     for(int n = 16; n < arraySize; n *= 2){
         for(int i=0; i < 3; ++i){
-            calculateTime(100, funcArray[i], 3, l, r);
+           cout <<  calculateTime(V, funcArray[i], 3, l, r) << endl;
         }
     }
 

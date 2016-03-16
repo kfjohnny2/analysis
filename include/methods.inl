@@ -9,17 +9,20 @@ using namespace std;
 using namespace chrono;
 
 template <typename Obj>
-int sSearchRec(Obj v, Obj n, int l, int r){
-    if(l>r)
+int sSearchRec(std::vector<Obj> v , Obj n, int l, int r){
+    if(l>r){
         return -1;
-    else if (v[l] == n)
+    }
+    else if (v[l] == n){
         return 1;
-    else
+    }
+    else{
         return sSearchRec(v, n, l+1, r);
+    }
 }
 
 template <typename Obj>
-int bSearchIte(Obj v, Obj n, int l, int r){
+int bSearchIte(std::vector<Obj> v, Obj n, int l, int r){
     while (l <= r){
         int media = (l+r)/2;
         if(v[media] == n){
@@ -35,7 +38,7 @@ int bSearchIte(Obj v, Obj n, int l, int r){
 }
 
 template <typename Obj>
-int bTernRec (Obj v, Obj n, int l, int r){
+int bTernRec (std::vector<Obj> v, Obj n, int l, int r){
     int media0 = (r+(2*l))/3;
     int media1 = (l+(2*r))/3;
 
@@ -60,7 +63,7 @@ int bTernRec (Obj v, Obj n, int l, int r){
 // }
 
 template <typename Obj>
-void randomFill(vector<Obj> *&v, const Obj l, const Obj u, const unsigned int seed, const int size) {
+void randomFill(std::vector<Obj> &v, const Obj l, const Obj u, const unsigned int seed, const int size) {
     // use the default random engine and an uniform distribution
     default_random_engine eng(seed);
     uniform_real_distribution<double> distr(l, u);
@@ -70,20 +73,95 @@ void randomFill(vector<Obj> *&v, const Obj l, const Obj u, const unsigned int se
         v[i] = distr(eng);
 }
 
-template <typename Obj>
-long double calculateTime(const Obj x , int (*function)(Obj, Obj ,int , int ), const Obj n, const Obj l, const Obj r, const Obj s){
+// template <typename  Obj>
+// void randomFill(vector<Obj> &a, const int size, const int seed )
+// {
+//     //unsigned int small = 0, bigger = 1000;
+//     default_random_engine eng(seed);
+//     uniform_real_distribution <double> distr(0, 1000);
+//     for(int x=0;x<size;x++)
+//         a[x] = distr(eng);
+
+// }
+
+long double calculateTime(const std::vector<long int> v, int (*function)(std::vector<long int>, long int, int, int ), long int x, long int l, long int r ){
+
     long double duration = 0;
-    vector<long int> v(s+l, s+r) ;
-    for (int i = 0; i < x; ++i)
+    for (int i = 0; i < 99; ++i)
     {
         auto start = steady_clock::now();
-        function(v, n, l, r);
+
+            function(v, x, l, r);
+
         auto end = steady_clock::now();
         auto diff = chrono::duration <double, std::milli> (end-start).count();
-
         duration += (diff-duration)/(i+1);
     }
     return duration;
+}
+
+// template <typename Obj>
+// long double calculateTime(int x , int (*function)(Obj , Obj , int , int ), Obj n, int l, int r, const std::vector<Obj> v){
+//     long double duration = 0;
+//     for (int i = 0; i < x; ++i)
+//     {
+//         auto start = steady_clock::now();
+//         function(v, n, l, r);
+//         auto end = steady_clock::now();
+//         auto diff = chrono::duration <double, std::milli> (end-start).count();
+
+//         duration += (diff-duration)/(i+1);
+//     }
+//     return duration;
+// }
+
+//PARTE DE BRENO
+template <typename Obj>
+int searchIte( std::vector<Obj> _V, Obj &x, int high )
+{
+    for (int z =0; z <= high; z++)
+    {
+        if(_V[z] == x)
+            return z;
+    }
+    return -1;
+}
+
+template <typename Obj>
+int bSearchRec(std::vector<Obj> _V, Obj &x, int low, int high)
+{
+    int mid = ( low+ high )/2;
+    if ( low > high)
+        return -1;
+    if ( _V[mid] == x )
+        return mid;
+    else if ( _V[mid] < x )
+        return bSearchRec( _V, x,  mid+1, high);
+    else
+        return bSearchRec( _V,  x, low, mid-1);
+}
+
+template <typename Obj>
+int tSearchIte(std::vector<Obj> _V, Obj &x, int low, int high)
+{
+    while (low <= high)
+    {
+        int T1 = low + ( high - low )*1/3;
+        int T2 = low + ( high - low )*2/3;
+        if( _V[T1] == x )
+            return T1;
+        else if ( _V[T2] == x )
+            return T2;
+        else if ( _V[T1] > x )
+            high = T1 -1;
+        else if ( _V[T2] < x )
+            low = T2 + 1;
+        else{
+            low = T1 + 1;
+            high = T2 - 1;
+        }
+    }
+    return -1;
 }
 
 
