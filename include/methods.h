@@ -21,7 +21,7 @@ template <typename Obj>
 void randomFill(vector<Obj> &, const int, const int );
 
 template <typename Obj>
-long double calculateTime(const vector<Obj> , long int (*)( vector<Obj>, long int, long int ), Obj, long int , long int  );
+long double calculateTime(const vector<Obj> , long int (*)( vector<Obj>, long int, long int ), const Obj, const long int , const long int  );
 
 /*template <typename Obj>
 long double calculateTime(int, int (*)(Obj *, Obj, int, int), Obj , int , int, const std::vector<Obj> v);*/

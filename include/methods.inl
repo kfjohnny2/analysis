@@ -95,7 +95,7 @@ void randomFill(std::vector<Obj> &v, const Obj l, const Obj u, const unsigned in
 
 // }
 
-long double calculateTime(const std::vector<long int> v, long int (*function)(std::vector<long int>, long int, long int, long int ), long int x, long int l, long int r ){
+long double calculateTime(const std::vector<long int> v, long int (*function)(std::vector<long int>, long int, long int, long int ), const long int x, const long int l, const long int r ){
 
     long double duration = 0;
     for (int i = 0; i < 100; ++i)
