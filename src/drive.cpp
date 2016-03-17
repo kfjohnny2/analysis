@@ -75,7 +75,7 @@ int main(int argc, char const *argv[])
                            "binary_search_ite",
                            "binary_search_rec",
                            "ternary_search_ite",
-                           "wrapper_binary_search"};
+                           "wrapper_binary_search" };
     
     long int third;
     long int worst = 1001; //I'm using a vector with values from 0 to 1000, and 1001 dont exist
@@ -84,22 +84,34 @@ int main(int argc, char const *argv[])
         if (i == 2){
             cout << "\n>>> Sorting vector" << endl;
             sort(V.begin(), V.end()); // sort the vector for sorted searchs
-            cout << "\n>>> Sorting completed " << endl;
+            cout << "\n>>> Sorting completed\n" << endl;
         }
         
         //int t;
         myfile_third.open("files/thirdFour/" + n_function[i] + "_thirdFour.dat"  );
         myfile_worst.open("files/worstCase/" + n_function[i] + "_worstCase.dat"  );
 
-        for(long int n = 32; n <= arraySize; n *= 2){
+                cout << n_function[i] << endl;
+        if(i == 0 && arraySize > pow(2, 13)){// VERIFIQUE O LIMITE DE ITERAÇÕES PARA A SEQUENCIAL RECURSIVA E ALTERE AQUI .. PQ DEPOIS DO LIMITE ELE PARA DE EXECUTAR 
+            for(long int n = 32; n <= pow(2, 13); n *= 2){
                 third = V[3*n/4];
-            
-                myfile_third << n << " " << calculateTime(V, funcArray[i], third, 0, n-1) << endl; //imprime o valor da variavel cont no dat
-            
-                myfile_worst << n << " " << calculateTime(V, funcArray[i], worst, 0, n-1) << endl; //imprime o valor da variavel cont no dat
                 
-            
-        }
+                cout << n << endl;
+                myfile_third << n << " " << calculateTime(V, funcArray[i], third, 0, n-1) << endl; //imprime o valor da variavel cont no dat    
+                myfile_worst << n << " " << calculateTime(V, funcArray[i], worst, 0, n-1) << endl; //imprime o valor da variavel cont no dat   
+            }
+
+
+        }else{
+
+            for(long int n = 32; n <= arraySize; n *= 2){
+                third = V[3*n/4];
+                
+                //cout << n << endl;
+                myfile_third << n << " " << calculateTime(V, funcArray[i], third, 0, n-1) << endl; //imprime o valor da variavel cont no dat    
+                myfile_worst << n << " " << calculateTime(V, funcArray[i], worst, 0, n-1) << endl; //imprime o valor da variavel cont no dat   
+            }
+        }    
 
         myfile_third.close();
         myfile_worst.close(); 
