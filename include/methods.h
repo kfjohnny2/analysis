@@ -22,7 +22,7 @@ void randomFill(vector<Obj> &, const int, const int );
 
 long double calculateTime(const std::vector<long int> , int (*)(std::vector<long int>, long int, int, int ), long int , long int , long int  );
 
-void printFile(int, long double , long int, int);
+//void printFile(int, long double , long int, int);
 
 /*template <typename Obj>
 long double calculateTime(int, int (*)(Obj *, Obj, int, int), Obj , int , int, const std::vector<Obj> v);*/

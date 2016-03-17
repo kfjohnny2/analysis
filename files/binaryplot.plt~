@@ -1,0 +1,11 @@
+set terminal png
+set output "binary.pdf"
+set timestamp
+set ylabel "Time (ms)"
+set xlabel "Size Vector"
+set title "Binary Search -> Third Four x Worst"
+set key top right
+set grid
+set style data lines
+plot "thirdFour/binary_search_ite_thirdFour.dat" title "Third Four Iterative",\
+     "worstCase/binary_search_ite_worstCase.dat" title "Worst Case Interative"

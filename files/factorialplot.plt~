@@ -1,0 +1,10 @@
+set terminal pdf
+set output "factorial_graphic.pdf"
+set timestamp
+set ylabel "Time (ns)"
+set title "Factorial -> Iterative x Recursive"
+set key top left
+set grid
+set style data lines
+plot "iterative.dat" title "Iterative",\
+     "recursive.dat" title "Recursive"
