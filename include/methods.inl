@@ -199,6 +199,20 @@ void printFile(int f, long double duration, long int n, int sit){
                 myfile << n << "\t "<< duration << endl;
                 myfile.close(); //imprime o valor da variavel cont no dat
             }
+        case 6:
+            if(sit == 0){
+                myfile.open("files/bsearch.dat", ios::out | ios::app ); // nome do arquivo dat
+                myfile << n << "\t "<< duration << endl; //imprime o valor da variavel cont no dat
+                myfile.close();
+            } else if( sit == 1){
+                myfile.open("files/bsearch.dat", ios::out | ios::app );
+                myfile << n << "\t "<< duration << endl;
+                myfile.close(); //imprime o valor da variavel cont no dat
+            } else{
+                myfile.open("files/bsearch.dat", ios::out | ios::app );
+                myfile << n << "\t "<< duration << endl;
+                myfile.close(); //imprime o valor da variavel cont no dat
+            }
     }
 
 }
@@ -279,11 +293,12 @@ int comparar (const Obj x, const Obj y)
 }
 //void* bsearch( const void* key, const void* ptr, std::size_t count,
 //std::size_t size, int (*comp)(const void*, const void*) );
-template<typename Obj>
+template <typename Obj>
 long int bWrapperSearch( vector<Obj> _V, const Obj x, long int low, long int high)
 {
     Obj *a = (Obj *)bsearch( &x, _V.data(), high - low + 1, sizeof(Obj), comparar);
-    if( a != NULL ) return (a - _V.data() );
+    if( a != NULL )
+        return (a - _V.data() );
     else return -1;
 }
 
