@@ -24,6 +24,7 @@ long int sSearchRec(std::vector<Obj> v , Obj n, long int l, long int r){
 
 template <typename Obj>
 long int bSearchIte(std::vector<Obj> v, Obj n, long int l, long int r){
+
     while (l <= r){
         int media = (l+r)/2;
         if(v[media] == n){
@@ -97,7 +98,6 @@ void randomFill(std::vector<Obj> &v, const Obj l, const Obj u, const unsigned in
 // }
 
 long double calculateTime(const std::vector<long int> v, long int (*function)(std::vector<long int>, long int, long int, long int ), const long int x, const long int l, const long int r ){
-
     long double duration = 0;
     for (int i = 0; i < 100; ++i)
     {
@@ -109,37 +109,96 @@ long double calculateTime(const std::vector<long int> v, long int (*function)(st
         auto diff = chrono::duration <double, std::milli> (end-start).count();
         duration += (diff-duration)/(i+1);
     }
-
     return duration;
 }
 
-void printFile(int f, long double duration, long int n){
+void printFile(int f, long double duration, long int n, int sit){
     ofstream myfile;
     switch(f){
         case 0:
-            myfile.open("files/standard_search_recursive.txt", ios::out | ios::app );
-            myfile << n << "\t "<< duration << endl;
-            myfile.close(); //imprime o valor da variavel cont no txt
+            if(sit == 0){
+                myfile.open("files/standard_search_recursive.dat", ios::out | ios::app );
+                myfile << n << "\t "<< duration << endl;
+                myfile.close(); //imprime o valor da variavel cont no dat
+            } else if( sit == 1){
+                myfile.open("files/standard_search_recursive_worst_case.dat", ios::out | ios::app );
+                myfile << n << "\t "<< duration << endl;
+                myfile.close(); //imprime o valor da variavel cont no dat
+            } else{
+                myfile.open("files/standard_search_recursive_third.dat", ios::out | ios::app );
+                myfile << n << "\t "<< duration << endl;
+                myfile.close(); //imprime o valor da variavel cont no dat
+            }
         case 1:
-            myfile.open("files/binary_search_ite.txt", ios::out | ios::app ); // nome do arquivo txt
-            myfile << n << "\t "<< duration << endl; //imprime o valor da variavel cont no txt
-            myfile.close();
+            if(sit == 0){
+                myfile.open("files/standard_search_ite.dat", ios::out | ios::app ); // nome do arquivo dat
+                myfile << n << "\t "<< duration << endl; //imprime o valor da variavel cont no dat
+                myfile.close();
+            } else if( sit == 1){
+                myfile.open("files/standard_search_ite_worst_case.dat", ios::out | ios::app );
+                myfile << n << "\t "<< duration << endl;
+                myfile.close(); //imprime o valor da variavel cont no dat
+            } else{
+                myfile.open("files/standard_search_ite_third.dat", ios::out | ios::app );
+                myfile << n << "\t "<< duration << endl;
+                myfile.close(); //imprime o valor da variavel cont no dat
+            }
         case 2:
-            myfile.open("files/ternary_search_rec.txt", ios::out | ios::app ); // nome do arquivo txt
-            myfile << n << "\t "<< duration << endl; //imprime o valor da variavel cont no txt
-            myfile.close();
+            if(sit == 0){
+                myfile.open("files/ternary_search_rec.dat", ios::out | ios::app ); // nome do arquivo dat
+                myfile << n << "\t "<< duration << endl; //imprime o valor da variavel cont no dat
+                myfile.close();
+            } else if( sit == 1){
+                myfile.open("files/ternary_search_rec_worst_case.dat", ios::out | ios::app );
+                myfile << n << "\t "<< duration << endl;
+                myfile.close(); //imprime o valor da variavel cont no dat
+            } else{
+                myfile.open("files/ternary_search_rec_third.dat", ios::out | ios::app );
+                myfile << n << "\t "<< duration << endl;
+                myfile.close(); //imprime o valor da variavel cont no dat
+            }
         case 3:
-            myfile.open("files/standard_search_ite.txt", ios::out | ios::app ); // nome do arquivo txt
-            myfile << n << "\t "<< duration << endl; //imprime o valor da variavel cont no txt
-            myfile.close();
+            if(sit == 0){
+                myfile.open("files/binary_search_ite.dat", ios::out | ios::app ); // nome do arquivo dat
+                myfile << n << "\t "<< duration << endl; //imprime o valor da variavel cont no dat
+                myfile.close();
+            } else if( sit == 1){
+                myfile.open("files/binary_search_ite_worst_case.dat", ios::out | ios::app );
+                myfile << n << "\t "<< duration << endl;
+                myfile.close(); //imprime o valor da variavel cont no dat
+            } else{
+                myfile.open("files/binary_search_ite_third.dat", ios::out | ios::app );
+                myfile << n << "\t "<< duration << endl;
+                myfile.close(); //imprime o valor da variavel cont no dat
+            }
         case 4:
-            myfile.open("files/binary_search_rec.txt", ios::out | ios::app ); // nome do arquivo txt
-            myfile << n << "\t "<< duration << endl; //imprime o valor da variavel cont no txt
-            myfile.close();
+            if(sit == 0){
+                myfile.open("files/binary_search_rec.dat", ios::out | ios::app ); // nome do arquivo dat
+                myfile << n << "\t "<< duration << endl; //imprime o valor da variavel cont no dat
+                myfile.close();
+            } else if( sit == 1){
+                myfile.open("files/binary_search_rec_worst_case.dat", ios::out | ios::app );
+                myfile << n << "\t "<< duration << endl;
+                myfile.close(); //imprime o valor da variavel cont no dat
+            } else{
+                myfile.open("files/binary_search_rec_third.dat", ios::out | ios::app );
+                myfile << n << "\t "<< duration << endl;
+                myfile.close(); //imprime o valor da variavel cont no dat
+            }
         case 5:
-            myfile.open("files/ternary_search_ite.txt", ios::out | ios::app ); // nome do arquivo txt
-            myfile << n << "\t "<< duration << endl; //imprime o valor da variavel cont no txt
-            myfile.close();
+            if(sit == 0){
+                myfile.open("files/ternary_search_ite.dat", ios::out | ios::app ); // nome do arquivo dat
+                myfile << n << "\t "<< duration << endl; //imprime o valor da variavel cont no dat
+                myfile.close();
+            } else if( sit == 1){
+                myfile.open("files/ternary_search_ite_worst_case.dat", ios::out | ios::app );
+                myfile << n << "\t "<< duration << endl;
+                myfile.close(); //imprime o valor da variavel cont no dat
+            } else{
+                myfile.open("files/ternary_search_ite_third.dat", ios::out | ios::app );
+                myfile << n << "\t "<< duration << endl;
+                myfile.close(); //imprime o valor da variavel cont no dat
+            }
     }
 
 }
@@ -233,7 +292,7 @@ long int bWrapperSearch( vector<Obj> _V, const Obj x, long int low, long int hig
 
 // void calculateTime(Obj fileName, int _argc, Obj argv, Obj function){
 //     ofstream myfile;
-//     myfile.open("exemple.txt");
+//     myfile.open("exemple.dat");
 //     auto maxN(0ul);
 //     if(_argc > 1)
 //         stringstream(argv[1])>> maxN;
