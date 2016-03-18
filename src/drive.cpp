@@ -110,6 +110,7 @@ int main(int argc, char const *argv[])
                 myfile_worst << n << " " << calculateTime(new_arr, funcArray[i], worst, 0, n-1) << endl; //imprime o valor da variavel cont no dat
                 cout << "RUNNING THE NORMAL\n"<< endl;
                 myfile_normal << n << " " << calculateTime(new_arr, funcArray[i], 47, 0, n-1) << endl; //imprime o valor da variavel cont no dat
+                new_arr.clear();
             }
         }else{
             for(long int n = 32; n <= arraySize; n *= 2){
@@ -123,7 +124,8 @@ int main(int argc, char const *argv[])
                 cout << "RUNNING THE WORST CASE\n"<< endl;
                 myfile_worst << n << " " << calculateTime(new_arr, funcArray[i], worst, 0, n-1) << endl; //imprime o valor da variavel cont no dat
                 cout << "RUNNING THE NORMAL\n"<< endl;
-                myfile_normal << n << " " << calculateTime(new_arr, funcArray[i], 47, 0, n-1) << endl; //imprime o valor da variavel cont no dat
+                myfile_normal << n << " " << calculateTime(new_arr, funcArray[i], 47, 0, n-1) << endl;//imprime o valor da variavel cont no dat
+                new_arr.clear();
             }
         }
 
